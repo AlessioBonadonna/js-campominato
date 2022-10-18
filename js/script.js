@@ -14,17 +14,20 @@ const playBUTTON = document.getElementById('play');
 
 //faccio partire la funzione play con tutto il codice dentro 
 function play() {
+    let counter = 0;
+
     let cucu = document.getElementById('cucu');
     cucu.classList.remove('noncliccabile');
     document.getElementById('h2').style.display = 'none';
     const NUM_BOMB = 16;
+
     const bombsPosition = [];
     let numCell;
     const fieldGame = document.getElementById('field-game');
     fieldGame.innerHTML = '';
     const levelHTML = document.getElementById('livello');
     const level = levelHTML.value;
-    
+
     //switch per la difficolta del gioco 
     switch (level) {
         case '1':
@@ -48,20 +51,24 @@ function play() {
         cell.innerHTML = `<span></span>`;
 
         //ciclo if con addEvent click con la funzione che mi differenza il rosso e il blu    
-        let counter =0
+        let mesg = document.getElementById("hola");
+        mesg.innerHTML = ''
         if (bombsPosition.includes(num)) {
             cell.classList.add('bomb');
+
             cell.addEventListener('click', function () {
-                
+
                 const arrBomb = document.querySelectorAll('.bomb');
                 for (let i = 0; i < arrBomb.length; i++) {
                     arrBomb[i].classList.add('red');
-                   
-                   
+
+
                 }
                 cucu.classList.add('noncliccabile');
-                
-            
+
+                mesg.innerHTML = "Hai perso il tuo punteggio è " + counter;
+
+
                 /*qua va inserito la frazione di codice per far spuntare il contatore di click !!!!
 
             
@@ -70,6 +77,14 @@ function play() {
         } else {
             cell.addEventListener('click', function () {
                 this.classList.add('green');
+                counter++;
+                console.log(counter);
+                if (counter == (numCell - NUM_BOMB)) {
+
+                    mesg.innerHTML = "HAI VINTO !!";
+
+                }
+
             });
         }
         return cell;
