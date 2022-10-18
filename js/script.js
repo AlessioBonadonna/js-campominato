@@ -66,7 +66,7 @@ function play() {
                 }
                 cucu.classList.add('noncliccabile');
 
-                mesg.innerHTML = "Hai perso il tuo punteggio è " + counter;
+                mesg.innerHTML = "Hai perso il tuo punteggio è " + counter +"<br> clicca play per iniziare una nuova partita";
 
 
                 /*qua va inserito la frazione di codice per far spuntare il contatore di click !!!!
@@ -81,7 +81,7 @@ function play() {
                 console.log(counter);
                 if (counter == (numCell - NUM_BOMB)) {
 
-                    mesg.innerHTML = "HAI VINTO !!";
+                    mesg.innerHTML = "HAI VINTO !! <br> clicca Play per iniziare una nuova partita";
 
                 }
 
